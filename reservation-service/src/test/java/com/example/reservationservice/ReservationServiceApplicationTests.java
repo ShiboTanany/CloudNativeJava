@@ -1,13 +1,13 @@
-package com.cloudnative.app;
+package com.example.reservationservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CloudNativeJavaApplicationTests {
+class ReservationServiceApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
