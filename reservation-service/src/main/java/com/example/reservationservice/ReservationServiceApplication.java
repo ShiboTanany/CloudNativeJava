@@ -1,10 +1,14 @@
 package com.example.reservationservice;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,5 +61,23 @@ class SampleDataCLR implements CommandLineRunner {
             this.reservationRepo.save(new Reservation(name));
         });
         this.reservationRepo.findByReservationName("shaaban").forEach(System.out::println);
+    }
+}
+
+@RestController
+@RefreshScope
+class TestController {
+
+    @Value("${message}")
+    private String message;
+
+    @GetMapping("/message")
+    public String getMessage() {
+        return message;
+    }
+
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
